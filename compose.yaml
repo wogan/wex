@@ -1,0 +1,26 @@
+﻿services:
+  postgres:
+    image: postgres:17
+    container_name: wex-postgres
+    environment:
+      POSTGRES_DB: wex
+      POSTGRES_USER: wex
+      POSTGRES_PASSWORD: wex
+    ports:
+      - "5432:5432"
+    volumes:
+      - wex-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U wex -d wex"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+#  wex:
+#    image: wex
+#    build:
+#      context: .
+#      dockerfile: Wex/Dockerfile
+
+volumes:
+  wex-postgres-data:
+

@@ -1,0 +1,32 @@
+@Wex_HostAddress = http://localhost:5014
+
+POST {{Wex_HostAddress}}/cards
+Content-Type: application/json
+
+{
+  "limitAmount": 500000
+}
+
+###
+
+POST {{Wex_HostAddress}}/transactions
+Content-Type: application/json
+
+{
+  "cardId": 1,
+  "amount": "23.50",
+  "date": "2026-04-28T20:13:15.123Z",
+  "description": "This is a test transaction"  
+}
+
+###
+
+GET {{Wex_HostAddress}}/transactions/1
+
+###
+
+GET {{Wex_HostAddress}}/transactions/1?country=Australia&currency=Dollar
+
+###
+
+GET {{Wex_HostAddress}}/cards/1/balance?country=Australia&currency=Dollar
